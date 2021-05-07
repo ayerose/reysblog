@@ -1,3 +1,22 @@
 body {
     background: rosybrown;
 }
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.menu li {
+    float: left;
+}
+
+.menu li a {
+    display: block;
+    color: black;
+    padding-left: 0px;
+    padding-right: 16px;
+    text-decoration: none;
+}
