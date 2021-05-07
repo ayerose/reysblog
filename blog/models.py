@@ -28,17 +28,18 @@ class BlogIndexPage(Page):
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
-   body = StreamField([
-    ('heading', blocks.CharBlock(classname="full title", icon="title")),
-    ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
-    ('embed', EmbedBlock(icon="media")),
-])
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title", icon="title")),
+        ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
+        ('embed', EmbedBlock(icon="media")),
+        ])
+
     image = models.ForeignKey(
-    'wagtailimages.Image',
-    null=True,
-    blank=True,
-    on_delete=models.SET_NULL
-    )
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+)
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
