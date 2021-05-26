@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
 
-  
+  <div class="container">
     <h1 style=" color: #fff; margin-top: 50px" >{{ self.title }}</h1>
     {{ page.body|richtext }}
 
@@ -19,7 +19,7 @@
       </div>
 
 
-
+ <div class="container">
      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             {% for loop_cycle in self.carousel_images.all %}
@@ -38,6 +38,8 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    </div>
+
 
 
 

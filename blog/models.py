@@ -9,6 +9,8 @@ from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.embeds.blocks import EmbedBlock
 
 
+
+
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
@@ -47,3 +49,31 @@ class BlogPage(Page):
         FieldPanel('intro'),
         StreamFieldPanel('body')
     ]
+    
+    
+    
+class BlogListingPage(Page):
+    """Listing page lists all the Blog Detail Pages."""
+
+    template = "blog/blog_listing_page.html"
+
+    custom_title = models.CharField(
+        max_length=100,
+        blank=False,
+        null=False,
+        help_text='Overwrites the default title',
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("custom_title"),
+    ]
+
+    def get_context(self, request, *args, **kwargs):
+        """Adding custom stuff to our context."""
+        context = super().get_context(request, *args, **kwargs)
+        context["posts"] = BlogDetailPage.objects.live().public()
+        return context
+
+
+
+
